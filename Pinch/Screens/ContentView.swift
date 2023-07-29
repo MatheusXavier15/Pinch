@@ -28,6 +28,8 @@ struct ContentView: View {
         NavigationView {
             ZStack {
                 
+                Color.clear
+                
                 // MARK: - PAGE IMAGE
                 Image("magazine-front-cover")
                     .resizable()
@@ -69,6 +71,12 @@ struct ContentView: View {
             .navigationBarTitleDisplayMode(.inline)
             .onAppear {
                 isAnimating = true
+            }
+            // MARK: - INFO PANEL
+            .overlay(alignment: .top) {
+                InfoPanelView(scale: imageScale, offset: imageOffset)
+                    .padding(.horizontal)
+                    .padding(.top, 30)
             }
         }
         .navigationViewStyle(.stack)
